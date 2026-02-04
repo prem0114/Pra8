@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background:palegoldenrod;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background: #ffffff;
+            width: 400px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .gender {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background: #667eea;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5a67d8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>User Registration</h2>
+
+    <form onsubmit="return validateForm()">
+        <label>Full Name</label>
+        <input type="text" id="name" required>
+
+        <label>Email</label>
+        <input type="email" required>
+
+        <label>Password</label>
+        <input type="password" id="pass" required>
+
+        <label>Confirm Password</label>
+        <input type="password" id="cpass" required>
+
+        <label>Gender</label>
+        <div class="gender">
+            <input type="radio" name="gender" required> Male
+            <input type="radio" name="gender"> Female
+        </div>
+
+        <label>Date of Birth</label>
+        <input type="date" required>
+
+        <label>Phone Number</label>
+        <input type="tel" required>
+
+        <label>Address</label>
+        <textarea rows="3"></textarea>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    let user = prompt("Enter your username:");
+    if (user !== null && user !== "") {
+        alert("Welcome " + user + "!");
+    }
+
+    function validateForm() {
+        let pass = document.getElementById("pass").value;
+        let cpass = document.getElementById("cpass").value;
+        if (pass !== cpass) {
+            alert("Passwords do not match!");
+            return false;
+        }
+        let confirmSubmit = confirm("Do you want to submit the form?");
+        if (confirmSubmit) {
+            alert("Registration Successful!");
+            return true;
+        } else {
+            alert("Form submission cancelled.");
+            return false;
+        }
+    }
+</script>
+
+</body>
+</html>
